@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.Set;
 //import sun.nio.cs.ext.ISCII91;
-import sun.nio.cs.ext.*; //Verwende Java7 die Class ISCII91 ist in der aktullen Java Variante nicht vorhanden. 
+import sun.nio.cs.ext.*; //Verwende Java7 die Class ISCII91 ist nicht importierbar. Umgehe dies durch importieren aller Oberklassen. 
 
 /**
  *
