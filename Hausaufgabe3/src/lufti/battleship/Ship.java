@@ -1,7 +1,6 @@
 package lufti.battleship;
 
 import java.awt.Point;
-import java.math.*;
 
 /**
  * Diese Klasse repräsentiert eine Schiff auf dem Spielfeld.
@@ -79,24 +78,15 @@ public class Ship {
 	 * @return True wenn beide Schiffe zu nah aneinander liegen
 	 */
 	public boolean toCloseTo(Ship otherShip) {
-		if (Math.abs(this.position.x - otherShip.position.x) <= 1
-				| Math.abs(this.position.y - otherShip.position.y) <= 1) {
-
-			if (this.horizontal
-					&& otherShip.horizontal
-					&& (Math.abs(this.position.y - otherShip.position.y) <= 1 && (Math
-							.abs(this.position.x - otherShip.position.x) <= size - 1))) {
-				return true;
-			} else if (!(this.horizontal)
-					&& !(otherShip.horizontal)
-					&& Math.abs(this.position.x - otherShip.position.x) <= 1
-					&& (Math.abs(this.position.y - otherShip.position.y) <= size - 1)) {
-				return true;
-			} else {
-				if (this.horizontal
-						&& Math.abs(this.position.y - otherShip.position.y) < otherShip
-								.getSize()
-						&& Math.abs(this.position.x - otherShip.position.x) < size) {
+		Point[] resShip1 = getCoordinates();
+		Point[] resShip2 = otherShip.getCoordinates();
+		for (int i = 0; i < resShip1.length; i++) {
+			for (int j = 0; j < resShip2.length; j++) {
+				if (((resShip1[i].x + 1 == resShip2[j].x) || (resShip1[i].x - 1 == resShip2[j].x))
+						&& resShip1[i].y == resShip2[j].y) {
+					return true;
+				} else if (resShip1[i].x == resShip2[j].x
+						&& ((resShip1[i].y + 1 == resShip2[j].y) || (resShip1[i].y - 1 == resShip2[j].y))) {
 					return true;
 				}
 			}
