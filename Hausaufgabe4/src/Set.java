@@ -1,38 +1,48 @@
-public class Set {
-	/*
-	 * T7
-	 * 
-	 * Implementieren Sie eine Klasse Set, deren Instanzen Mengen natuerlicher
-	 * Zahlen darstellen. Die Klasse Set soll die Methode add(int x),
-	 * contains(int x) und remove(int x) zur Verfuegung stellen. Dabei sollen
-	 * die Attribute jeder Instanz der Klasse Set unveraenderbar sein, nachdem
-	 * sie im Konstruktor gesetzt wurden. Die Menge wird dafuer durch eine Liste
-	 * von Set Objekten repraesentiert. Jedes Set Objekt enthaelt eine Operation
-	 * und eine Referenz zu einem anderen Set Objekt (oder null, wenn es das
-	 * lezte Element der Liste ist). Jede Operation soll entweder eine Einfuege-
-	 * oder eine Loeschoperation sein. Die Methoden add(int x) und remove(int x)
-	 * geben ein neues Set Objekt zurueck, welches der neue Kopf der Liste ist
-	 * und eine Einfuege- oder Loeschoperation repraesentiert. Die Methode
-	 * contains(int x) entscheidet, ob eine Element in der Menge ist oder nicht,
-	 * indem sie die Einfuege- oder Loeschoperationen, die bereits ausgefuehrt
-	 * wurden druchlaeuft.
-	 */
-	public Set(Set nextElem_, int content_) {
-		final Set nextElem = nextElem_;
-		final int content = content_;
+public class Set{
+	final int value;
+	final boolean operation;
+	final Set next;
+
+	public Set(int newValue,boolean newOp) {
+		value=newValue;
+		operation=newOp;
+		next=null;
 	}
 
+	public Set(int newValue,boolean newOp,Set newNext) {
+		value=newValue;
+		operation=newOp;
+		next=newNext;
+	}
+	
+
 	public Set add(int x) {
-		return null;
+		return (new Set(x,true,this));
 	}
 
 	public Set remove(int x) {
-		return null;
+		return (new Set(x,false,this));
+	}
+	
+	public boolean contains(int x) {
+		if(x==this.value && this.operation==true) {
+			return true;
+		}
+		else if(x==this.value && this.operation==false) {
+			return false;
+		}
+		else if(x!=this.value) {
+			if(this.next!=null) {
+				return this.next.contains(x);
+			}
+			else {
+				return false;
+			}
+		}
+		return false;
 	}
 
-	public void contains(int x) {
 
-	}
 
 	/*
 	 * H9

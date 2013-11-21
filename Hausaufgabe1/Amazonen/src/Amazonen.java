@@ -6,8 +6,7 @@ public class Amazonen extends Brett{
 	}
 @Override
 public boolean safePosition(int x, int y){
-	
+return false;	
 }
 
-public 
 }
