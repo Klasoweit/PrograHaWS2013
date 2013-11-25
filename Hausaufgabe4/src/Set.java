@@ -69,7 +69,20 @@ public class Set {
 	}
 
 	public Set union(Set other) {
+		Set ret = new Set(value, true), tempT = this;
+		while(tempT.next != null){
+			tempT = tempT.next;
+			ret = new Set(tempT.value, tempT.operation, ret);
+		}
 
-		return null;
+		tempT = other;
+		while (tempT.next != null) {
+			tempT = tempT.next;
+			if (!ret.contains(tempT.value)) {
+				ret = new Set(tempT.value, tempT.operation, ret);
+			}
+		}
+
+		return ret;
 	}
 }
