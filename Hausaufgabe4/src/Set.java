@@ -1,48 +1,42 @@
-public class Set{
+public class Set {
 	final int value;
 	final boolean operation;
 	final Set next;
 
-	public Set(int newValue,boolean newOp) {
-		value=newValue;
-		operation=newOp;
-		next=null;
+	public Set(int newValue, boolean newOp) {
+		value = newValue;
+		operation = newOp;
+		next = null;
 	}
 
-	public Set(int newValue,boolean newOp,Set newNext) {
-		value=newValue;
-		operation=newOp;
-		next=newNext;
+	public Set(int newValue, boolean newOp, Set newNext) {
+		value = newValue;
+		operation = newOp;
+		next = newNext;
 	}
-	
 
 	public Set add(int x) {
-		return (new Set(x,true,this));
+		return (new Set(x, true, this));
 	}
 
 	public Set remove(int x) {
-		return (new Set(x,false,this));
+		return (new Set(x, false, this));
 	}
-	
+
 	public boolean contains(int x) {
-		if(x==this.value && this.operation==true) {
+		if (x == this.value && this.operation == true) {
 			return true;
-		}
-		else if(x==this.value && this.operation==false) {
+		} else if (x == this.value && this.operation == false) {
 			return false;
-		}
-		else if(x!=this.value) {
-			if(this.next!=null) {
+		} else if (x != this.value) {
+			if (this.next != null) {
 				return this.next.contains(x);
-			}
-			else {
+			} else {
 				return false;
 			}
 		}
 		return false;
 	}
-
-
 
 	/*
 	 * H9
@@ -55,15 +49,27 @@ public class Set{
 	 * soll ein Set zurueckgeben was alle Elemente aus der Menge worauf die
 	 * Methode aufgerufen wurde enthaelt, als auch die Element aus der Menge
 	 * other. Dabei sollen die Attribute jeder Instanz der Klasse Set, wie davor
-	 * unveraenderbar seindm nachdem sie im Konstruktor gesetzt wurden. Eine
-	 * leere Menge kann dabei auch durch den Wert null representiert werden.
+	 * unveraenderbar sein nachdem sie im Konstruktor gesetzt wurden. Eine leere
+	 * Menge kann dabei auch durch den Wert null representiert werden.
 	 */
 
 	public Set intersection(Set other) {
-		return null;
+		Set ret = null, tempT = this;
+		while (tempT != null) {
+			if (other.contains(tempT.value)) {
+				if (ret == null) {
+					ret = new Set(value, true);
+				} else {
+					ret = new Set(value, true, ret);
+				}
+			}
+			tempT = tempT.next;
+		}
+		return ret;
 	}
 
 	public Set union(Set other) {
+
 		return null;
 	}
 }
