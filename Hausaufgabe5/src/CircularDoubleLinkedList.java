@@ -18,11 +18,11 @@ class CircularDoubleLinkedList {
 
 	/*
 	 * Gegeben ist der Rump einer zirkulaer doppelt-verketteten Liste. In so
-	 * einer Liste kann von jedem Elemtn auf das vorherige und dsa nachfoglende
+	 * einer Liste kann von jedem Element auf das vorherige und das nachfolgende
 	 * Element der Liste zugegriffen werden. Die Elemente formen einen Kreis,
 	 * die Liste hat also keinen Anfang oder Ende.
 	 *  1. Implementieren Sie die
-	 * Methode public int size(), welhe die Anzahl an Elementen in der Liste
+	 * Methode public int size(), welche die Anzahl an Elementen in der Liste
 	 * zurueckgibt.
 	 *  2. Implementieren Sie die Methode public
 	 * CircualrDoubleLinkedList insert(int value). Die Methode soll einen neues
@@ -38,7 +38,7 @@ class CircularDoubleLinkedList {
 	 * aufgerufen wird, ueberpruefen und genau dann true zurueckgeben, wenn diese
 	 * Invariante gegeben ist.
 	 * Rufen sie checkStructure() in einem assert vor und
-	 * nach dem Ausfuehren jeder public Methide fuer jedes geaenderte Element sowie
+	 * nach dem Ausfuehren jeder public Methode fuer jedes geaenderte Element sowie
 	 * jedes Element, dass eine Referent auf ein geaendertes Element besitzt,
 	 * auf. Pruefen Sie mit einem solchen assert auch, ob die Invariante am Ende
 	 * jedes Konstruktors fuer das gerade erzeugte Element gilt.
@@ -52,7 +52,15 @@ class CircularDoubleLinkedList {
 	}
 
 	public int size() {
-		// TODO
+		int laenge=1;
+		return laenge= laenge+next.compare(this);
+	}
+	private int compare (CircularDoubleLinkedList List){ //Hilfsfunktion, da Weitergabe von "this" benoetigt
+		if(this.next==List){
+			return 0;
+		}else{
+			return List.next.compare(List)+1;
+		}
 	}
 
 	public boolean checkStructure() {
